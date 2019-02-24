@@ -132,15 +132,15 @@ type Config struct {
 
 type ContainerConfigWrapper struct {
 	*Config
-	*hostConfigWrapper
+	*HostConfigWrapper
 }
 
 func (c ContainerConfigWrapper) HostConfig() *HostConfig {
-	if c.hostConfigWrapper == nil {
+	if c.HostConfigWrapper == nil {
 		return new(HostConfig)
 	}
 
-	return c.hostConfigWrapper.GetHostConfig()
+	return c.HostConfigWrapper.GetHostConfig()
 }
 
 func DecodeContainerConfig(src io.Reader) (*Config, *HostConfig, error) {
